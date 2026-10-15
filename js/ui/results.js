@@ -12,23 +12,15 @@ function showFinalResult() {
   document.getElementById("deficitValue").innerText = "LKR " + Math.round(s.drivers.deficitAbs).toLocaleString() + " bn (" + s.deficitPercent.toFixed(2) + "%)";
   document.getElementById("confidenceValue").innerText = marketConfidence.toFixed(0) + " / 100";
 
+  // Neutral wording: state how many targets are met, never a verdict on the Budget.
   document.getElementById("headlineText").innerText =
-    rulesMetCount >= 4 ? "Budget Delivers a Credible Path Forward" :
-      rulesMetCount >= 3 ? "Budget Meets Some, Not All, 2027 Targets" :
-        "Budget Falls Short of the 2027 Fiscal Targets";
+    "Your Budget meets " + rulesMetCount + " of the 5 targets";
 
   document.getElementById("summaryText").innerText =
-    "Your Budget meets " + rulesMetCount + " of the 5 fiscal targets shown below, with market confidence at " + marketConfidence.toFixed(0) +
-    " / 100. The 1-year T-bill rate ends at " + s.tbill.toFixed(1) + "% and the rupee depreciates " + s.fxDepreciation.toFixed(1) +
+    "Market confidence, a simple game indicator, is " + marketConfidence.toFixed(0) +
+    " out of 100. The 1-year Treasury bill rate ends at " + s.tbill.toFixed(1) + "% and the rupee depreciates by " + s.fxDepreciation.toFixed(1) +
     "%, so interest costs Rs. " + Math.round(s.interest).toLocaleString() + " bn (" + s.interestToGDP.toFixed(1) + "% of GDP).";
 
-  let color = fiscalOutcome === "NO" ? "#c62828" : fiscalOutcome === "YES_ALT" ? "#66bb6a" : "#2e7d32";
-  document.getElementById("imfStatus").innerText = rulesMetCount >= 4 ? "ON TRACK" : rulesMetCount >= 3 ? "PARTIALLY ON TRACK" : "BELOW TARGET";
-  document.getElementById("imfStatus").style.background = color;
-  document.getElementById("imfBox").style.borderColor = color;
-  document.getElementById("imfText").innerText = fiscalOutcome === "NO"
-    ? "Several fiscal targets are not being met, and market confidence is fragile."
-    : "Public finances are broadly aligned with the IMF's 2027 projections.";
 
   let whyEl = document.getElementById("whyList");
   if (whyEl) whyEl.innerHTML = explainOutcome(s).map(t => "<p>" + t + "</p>").join("");
@@ -39,8 +31,8 @@ function showFinalResult() {
     let dp = rule.actual.toFixed(1) === rule.target.toFixed(1) ? 2 : 1;
     document.getElementById("ruleActual" + prefix).innerText = rule.actual.toFixed(dp) + "%";
     document.getElementById("ruleStatus" + prefix).innerHTML = rule.met
-      ? "<span class='rule-status met'>✓ Met</span>"
-      : "<span class='rule-status below'>⚠ " + (op === "≤ " ? "Above limit" : "Below target") + "</span>";
+      ? "<span class='rule-status met'>Met</span>"
+      : "<span class='rule-status notmet'>Not met</span>";
   }
   fillRule("Revenue", rules.revenue, "≥ ");
   fillRule("Primary", rules.primaryBalance, "≥ ");

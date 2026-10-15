@@ -15,7 +15,7 @@ const macro = {
   interestPct2027: 6.0,      // IMF CR 26/111: interest payments 2027, % of GDP
   gdp2027IMF: 38891,         // IMF CR 26/111: nominal GDP 2027, Rs bn
   debt2026Pct: 100.1,        // IMF: public debt 2026, % of GDP
-  primaryExpCap: 13.0,       // IMF-linked ceiling on primary expenditure, % of GDP (Sunday Times, Aug 2026)
+  primaryExpCap: 13.0,       // ceiling on primary expenditure, % of GDP (Public Financial Management Act, No. 44 of 2024; Fiscal Strategy Statement 2026)
   foreignInterestShare: 0.25,// game assumption
   tbillRepriceShare: 0.30,   // game assumption
   borderTaxShare: 0.30,      // game assumption
