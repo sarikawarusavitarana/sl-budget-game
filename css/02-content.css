@@ -150,6 +150,31 @@
   color: var(--status-good);
 }
 
+.rule-status.notmet {
+  background: #eef1f5;
+  color: #5b6672;
+}
+
+.sim-note {
+  margin: 0 0 16px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  background: #eef1f5;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.status-title {
+  margin: 0 0 6px;
+  font-size: 15px;
+}
+
+.results-disclaimer {
+  margin-top: 20px;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
 .rule-status.below {
   background: #fff2e8;
   color: var(--status-warn);
