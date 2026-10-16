@@ -6,7 +6,7 @@ const pageWeekMap = { p1: 0, p2: 0, p3: 0, p17: 0, p4: 1, p5: 2, p6: 3, p9: 4, p
 function updateLiveDashboard() {
   let s = computeFiscalSnapshot();
   let activeScreen = document.querySelector(".screen.active");
-  let activeId = activeScreen ? activeScreen.id : "p1";
+  let activeId = activeScreen ? activeScreen.id : "p2";
   let week = pageWeekMap[activeId] !== undefined ? pageWeekMap[activeId] : 0;
   let weekEl = document.getElementById("fiscalWeek");
   if (weekEl) weekEl.innerText = "WEEK " + week + " / 10";
