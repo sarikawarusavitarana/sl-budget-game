@@ -152,3 +152,40 @@ button:hover {
   border-width: 2px;
   color: var(--text-primary) !important;
 }
+/* SHARE RESULTS */
+.share-panel {
+  margin-top: 16px;
+  padding: 16px 18px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #f7f9fc;
+}
+
+.share-panel-text {
+  margin: 0 0 12px;
+}
+
+.share-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.share-actions button {
+  flex: 1 1 140px;
+}
+
+.share-actions button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.share-status {
+  margin: 10px 0 0;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.share-status:empty {
+  display: none;
+}

@@ -1271,7 +1271,17 @@
 
       <div class="nav">
         <button onclick="go('p16')">Back</button>
-        <button onclick="window.location.reload()">Restart Simulation</button>
+        <button class="share-btn" onclick="toggleSharePanel()" aria-controls="sharePanel">Share your results</button>
+        <button onclick="window.location.reload()">Play again</button>
+      </div>
+
+      <div id="sharePanel" class="share-panel" hidden>
+        <p class="share-panel-text">Save your results as an image or a PDF.</p>
+        <div class="share-actions">
+          <button type="button" onclick="runShareAction('image')">Download image</button>
+          <button type="button" onclick="runShareAction('pdf')">Download PDF</button>
+        </div>
+        <p id="shareStatus" class="share-status" aria-live="polite"></p>
       </div>
 
     </div>
@@ -1289,6 +1299,7 @@
   <script src="js/ui/dashboard.js"></script>
   <script src="js/engine/outcome-explanation.js"></script>
   <script src="js/ui/results.js"></script>
+  <script src="js/ui/share.js"></script>
   <script src="js/main.js"></script>
 </body>
 
