@@ -152,7 +152,28 @@ button:hover {
   border-width: 2px;
   color: var(--text-primary) !important;
 }
-/* SHARE RESULTS */
+/* SAVE RESULTS */
+/* On the results page "Play again" stays the main (dark) button and "Save your results" sits after it. */
+.nav button.primary-btn {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+.nav button.primary-btn:hover {
+  background: #103d60;
+}
+
+.nav button.share-btn:last-child {
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  border-color: var(--line);
+}
+
+.nav button.share-btn:last-child:hover {
+  background: #f3f5f8;
+}
+
 .share-panel {
   margin-top: 16px;
   padding: 16px 18px;

@@ -1271,15 +1271,15 @@
 
       <div class="nav">
         <button onclick="go('p16')">Back</button>
-        <button class="share-btn" onclick="toggleSharePanel()" aria-controls="sharePanel">Share your results</button>
-        <button onclick="window.location.reload()">Play again</button>
+        <button class="primary-btn" onclick="window.location.reload()">Play again</button>
+        <button class="share-btn" onclick="toggleSharePanel()" aria-controls="sharePanel">Save your results</button>
       </div>
 
       <div id="sharePanel" class="share-panel" hidden>
         <p class="share-panel-text">Save your results as an image or a PDF.</p>
         <div class="share-actions">
-          <button type="button" onclick="runShareAction('image')">Download image</button>
-          <button type="button" onclick="runShareAction('pdf')">Download PDF</button>
+          <button type="button" onclick="runShareAction('image')">Image (PNG)</button>
+          <button type="button" onclick="runShareAction('pdf')">PDF</button>
         </div>
         <p id="shareStatus" class="share-status" aria-live="polite"></p>
       </div>
