@@ -28,6 +28,10 @@ const pageTrackerMap = {
   p12: "Infra", p14: "Agri", p15: "Admin", p18: "Digital", p16: "Enviro", p13: "Results"
 };
 
+// The furthest area the player has reached. Players can jump back (or forward again)
+// to any area up to this point, but cannot skip ahead to areas they have not answered yet.
+let furthestTrackerIndex = -1;
+
 function updatePageTracker(pageId) {
   let tracker = document.getElementById("pageTracker");
   if (!tracker) return;
@@ -37,13 +41,56 @@ function updatePageTracker(pageId) {
   let steps = Array.from(tracker.querySelectorAll(".tracker-step"));
   let lines = Array.from(tracker.querySelectorAll(".tracker-line"));
   let currentIndex = steps.findIndex(s => s.dataset.label === currentLabel);
+  if (currentIndex > furthestTrackerIndex) furthestTrackerIndex = currentIndex;
   steps.forEach((s, i) => {
-    s.classList.remove("completed", "current");
-    if (i < currentIndex) s.classList.add("completed");
-    else if (i === currentIndex) s.classList.add("current");
+    s.classList.remove("completed", "current", "reachable");
+    let reachable = i <= furthestTrackerIndex && i !== currentIndex;
+    if (i === currentIndex) s.classList.add("current");
+    else if (reachable) s.classList.add("completed", "reachable");
+    if (reachable) {
+      s.setAttribute("role", "button");
+      s.setAttribute("tabindex", "0");
+      s.setAttribute("title", "Go to " + s.dataset.label);
+    } else {
+      s.removeAttribute("role");
+      s.removeAttribute("tabindex");
+      s.removeAttribute("title");
+    }
   });
-  lines.forEach((l, i) => { l.classList.toggle("completed", i < currentIndex); });
+  lines.forEach((l, i) => { l.classList.toggle("completed", i < furthestTrackerIndex); });
 }
+
+function jumpToArea(label) {
+  let pageId = Object.keys(pageTrackerMap).find(k => pageTrackerMap[k] === label);
+  if (!pageId) return;
+  if (pageId === "p13") {
+    go("p13");
+    if (window.showFinalResult) showFinalResult();
+    return;
+  }
+  let stepperId = "stepper-" + pageId;
+  if (document.getElementById(stepperId)) {
+    hideStepWarning(stepperId);
+    showStep(stepperId, 0);
+  }
+  go(pageId);
+}
+
+(function initTrackerClicks() {
+  let tracker = document.getElementById("pageTracker");
+  if (!tracker) return;
+  tracker.addEventListener("click", function (e) {
+    let step = e.target.closest(".tracker-step.reachable");
+    if (step) jumpToArea(step.dataset.label);
+  });
+  tracker.addEventListener("keydown", function (e) {
+    if (e.key !== "Enter" && e.key !== " ") return;
+    let step = e.target.closest(".tracker-step.reachable");
+    if (!step) return;
+    e.preventDefault();
+    jumpToArea(step.dataset.label);
+  });
+})();
 
 function closeInfoTooltips() {
   document.querySelectorAll('.info-icon.open').forEach(i => i.classList.remove('open'));
