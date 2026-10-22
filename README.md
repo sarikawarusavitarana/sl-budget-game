@@ -230,6 +230,14 @@ Secondary inspirations:
 
 No endorsement or affiliation with these projects is implied.
 
+## Acknowledgements
+
+A huge thank you to Asel, who spent the last two weeks helping me bring this game to life. Thank you for sharing your knowledge so generously, for helping me get the game onto GitHub, and for transforming how it looks and feels.
+
+A heartfelt thank you to Aneetha, Senith, Thaththi and Ammi for working through the script and questions with me. Your thoughts helped me make the game clearer and more engaging.
+
+And thank you to everyone who has played the game, read through it, shared feedback, asked questions or offered suggestions. Every contribution has helped me see this project differently.
+
 ## Code structure
 
 The game page holds only markup. Styles and scripts live in separate files, grouped by concern:
