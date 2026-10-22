@@ -252,6 +252,7 @@ The game page holds only markup. Styles and scripts live in separate files, grou
 - `js/ui/navigation.js`, `js/ui/modal.js`, `js/ui/stepper.js`: page navigation, pop-ups and step-by-step screens
 - `js/ui/sectors.js`, `js/ui/taxes.js`: sector sliders and revenue choices
 - `js/ui/dashboard.js`, `js/ui/results.js`: live fiscal dashboard and final results page
+- `js/analytics.js`: optional anonymous recording of starts, finishes and choices to a Google Sheet (off until a URL is added; see `docs/anonymous-recording.md`)
 - `js/main.js`: start-up
 
 Scripts are plain (non-module) scripts that share globals, so the `<script>` order at the end of `budget_game_fixed.html` must be kept. There is no build step, and the game runs directly from `file://`.
@@ -265,6 +266,7 @@ See `docs/segregation-of-duties.md` for who edits which files.
 - `docs/segregation-of-duties.md`: ownership and integration contract for policy vs engineering edits
 - `docs/beta-readiness-checklist.md`: beta test gate and smoke-test protocol
 - `docs/github-pages-deployment.md`: setup guide for zero-cost hosting on GitHub Pages
+- `docs/anonymous-recording.md` and `docs/anonymous-recording-apps-script.gs`: how to set up anonymous gameplay recording to a Google Sheet
 - `index.html`: root entry point for GitHub Pages
 - `.nojekyll`: disables Jekyll processing for static asset fidelity
 - `README.md`: project overview and contributor guidance

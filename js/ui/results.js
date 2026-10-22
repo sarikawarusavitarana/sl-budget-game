@@ -5,6 +5,7 @@ function showFinalResult() {
   let s = computeFiscalSnapshot();
   let rules = s.rules, marketConfidence = s.marketConfidence, fiscalOutcome = s.fiscalOutcome;
   let rulesMetCount = Object.values(rules).filter(r => r.met).length;
+  if (typeof recordFinished === "function") recordFinished(s);
 
   document.getElementById("revValue").innerText = "LKR " + Math.round(s.revenue).toLocaleString() + " bn";
   document.getElementById("expValue").innerText = "LKR " + Math.round(s.expenditure).toLocaleString() + " bn";

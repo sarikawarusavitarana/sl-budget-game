@@ -12,7 +12,11 @@ function openModal(which) {
   let title = modalTitles[which] || "Information";
   let body = document.getElementById("modalBody");
   document.getElementById("modalTitle").innerText = title;
-  body.innerHTML = MODAL_CONTENT[which] || "<p>Content unavailable.</p>";
+  let html = MODAL_CONTENT[which] || "<p>Content unavailable.</p>";
+  // Mention anonymous recording in About, at the end of "Why make it public?", only when it is switched on.
+  if (which === "about" && typeof analyticsEnabled === "function" && analyticsEnabled())
+    html = html.replace("<h4>Acknowledgements</h4>", "<p>" + RECORDING_NOTICE + "</p><h4>Acknowledgements</h4>");
+  body.innerHTML = html;
 
   m.hidden = false;
   document.body.classList.add("modal-open");

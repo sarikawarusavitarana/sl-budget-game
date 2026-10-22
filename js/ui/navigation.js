@@ -19,6 +19,7 @@ function go(id) {
   if (next) next.classList.add('active');
   updateLiveDashboard();
   updatePageTracker(id);
+  if (typeof recordPageView === "function") recordPageView(id);
   syncHeaderSpace();
   window.scrollTo(0, 0);
 }
