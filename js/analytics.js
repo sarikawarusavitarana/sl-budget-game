@@ -8,7 +8,7 @@
    Paste the Google Apps Script web app URL below (see docs/anonymous-recording.md).
    While it is empty, nothing is recorded and the notice about recording stays hidden.
 ======================= */
-const ANALYTICS_URL = "";
+const ANALYTICS_URL = "https://script.google.com/macros/s/AKfycbyCEdmpfjX8UcWP6XgvpA4BOu0E_grTLLZWK9ZuRcPq3LxOYRAqEVF-cWwaYAwjirbJvA/exec";
 
 const RECORDING_NOTICE =
   "To help improve the game, your choices are recorded anonymously. No names, emails or other personal details are collected.";
