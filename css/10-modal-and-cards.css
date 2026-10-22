@@ -275,3 +275,7 @@ body.modal-open {
 .modal-body a {
     word-break: break-all;
 }
+/* Anonymous recording notice on the first page: 4px smaller than other notes */
+#recordingNotice {
+    font-size: 10px;
+}

@@ -69,5 +69,5 @@ function recordFinished(s) {
 (function showRecordingNotice() {
   if (!analyticsEnabled()) return;
   let el = document.getElementById("recordingNotice");
-  if (el) { el.textContent = RECORDING_NOTICE; el.hidden = false; }
+  if (el) { el.textContent = "* " + RECORDING_NOTICE; el.hidden = false; }
 })();
